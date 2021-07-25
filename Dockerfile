@@ -4,6 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # environment settings
 ENV HOME="/config"
+ENV REMOTELY_VERSION="v2021.05.19.1433"
 
 RUN \
  apt-get update && \
@@ -28,7 +29,7 @@ RUN \
   dpkg -i packages-microsoft-prod.deb && \
   apt-get update && \
   apt-get install -y dotnet-runtime-3.1 && \
-  wget -q https://github.com/lucent-sea/Remotely/releases/download/v2020.10.02.1757/Remotely_Server_Linux-x64.zip && \
+  wget -q https://github.com/lucent-sea/Remotely/releases/download/${REMOTELY_VERSION}/Remotely_Server_Linux-x64.zip && \
   unzip -o Remotely_Server_Linux-x64.zip -d /var/www/remotely && \
   rm Remotely_Server_Linux-x64.zip && \
   setfacl -R -m u:www-data:rwx /var/www/remotely && \
